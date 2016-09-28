@@ -9,6 +9,7 @@
 
 int main(int argc, const char *argv[]) {
   MD5_CTX md5;
+  char result[64];
   char hash[33];
   char digest[16];
   char hex[3];
@@ -16,6 +17,8 @@ int main(int argc, const char *argv[]) {
   char guess_map[MAX_KEY_LENGTH];
   char key[] = "8d7b356eae43adcd6ad3ee124c3dcf1e";
   char characters[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  char chain[] = { 0x0b, 0x34, 0x30, 0x20, 0x2f, 0x27, 0x05, 0x22, 0x05, 0x29,
+                   0x21, 0x28, 0x22, 0x26, 0x19, 0x34, 0x23, 0x22, 0x27, 0x2d  };
   unsigned int found, nchars, nkey, i, j;
   unsigned long long int possibilities;
 
@@ -78,5 +81,10 @@ int main(int argc, const char *argv[]) {
     fprintf(stdout, "Key not found!\n");
   }
 
+  for(i = 0, j = 0; i < 20; ++i, j = (j + 1) % strlen(guess)) {
+    result[i] = chain[i] ^ guess[j];
+  }
+
+  fprintf(stdout, "Result is \"%s\"\n", result);
   return 0;
 }
