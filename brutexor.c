@@ -84,6 +84,7 @@ int main(int argc, const char *argv[]) {
     result[i] = chain[i] ^ guess[j];
   }
 
+  result[20] = '\0';
   fprintf(stdout, "Result is \"%s\"\n", result);
   return 0;
 }
