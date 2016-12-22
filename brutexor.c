@@ -1,5 +1,5 @@
 /*
- * Brutexor - Brute-force attack and XOR decryption
+ * brutexor - Brute-force attack and XOR decryption
  *
  * Copyright (C) 2016  Rafael Ravedutti Lucio Machado
  *
